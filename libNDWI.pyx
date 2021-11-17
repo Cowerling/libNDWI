@@ -1,8 +1,10 @@
+# cython: language_level=3
+
 from osgeo import gdal
 import numpy as np
 
 
-def calculateNDVI(sourceFile, targetFile, processCallback=None):
+cdef public calculateNDVI(sourceFile, targetFile, processCallback):
     dataset = gdal.Open(sourceFile)
 
     if dataset is None and dataset.RasterCount < 7:
